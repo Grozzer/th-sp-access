@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "trusted-help-accessibility-tool-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/trustedHelpAccessibilityTool/TrustedHelpAccessibilityToolApplicationCustomizer.js",
+          "manifest": "./src/extensions/trustedHelpAccessibilityTool/TrustedHelpAccessibilityToolApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TrustedHelpAccessibilityToolApplicationCustomizerStrings": "lib/extensions/trustedHelpAccessibilityTool/loc/{locale}.js"
+  }
+}

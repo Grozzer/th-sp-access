@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="TrustedHelpAccessibilityTool"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="5cba2117-d677-4b35-976c-30af4ac9f0cb"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </CustomAction>
+</Elements>
