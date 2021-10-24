@@ -8,7 +8,7 @@ import {
 import { Dialog } from '@microsoft/sp-dialog';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
-import {FontModule,IFontMap,IFontModule} from './FontModule';
+import {FontMap, FontModule,IFontMap,IFontModule} from './FontModule';
 
 import styles from './TrustedHelpAccessibilityToolApplicationCustomizer.module.scss';
 
@@ -40,7 +40,9 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
   @override
   public onInit(): Promise<void> {
     
-    this.fontMapping = [{name: "Arial", value: "arial"}, {name: "OpenDyslexic", value: "opendyslexic"}, {name: "Verdana", value: "verdana"}];
+    const fontsInit = [{name: "Arial", value: "arial"}, {name: "OpenDyslexic", value: "opendyslexic"}, {name: "Verdana", value: "verdana"}];
+    this.fontMapping = fontsInit.map(font => new FontMap(font.name, font.value))
+
     this.fontModule = new FontModule(this.fontMapping);
 
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
@@ -48,12 +50,6 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
     this.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
-
-    let message: string = this.properties.testMessage;
-    
-    if (!message) {
-      message = '(No properties were provided.)';
-    }   
 
     return Promise.resolve();
   }
@@ -67,22 +63,8 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
         { onDispose: this._onDispose }
       );
   
-      if (this.properties) {
-        let topString: string = this.properties.Top;
-        if (!topString) {
-          topString = "(Top property was not defined.)";
-        }
-  
+      if (this.properties) {  
         if (this._topPlaceholder.domElement) {
-          this._topPlaceholder.domElement.innerHTML = `
-          <div class="${styles.app}">
-            <div class="${styles.top}">
-              <i class="ms-Icon ms-Icon--Info" aria-hidden="true"></i> ${escape(
-                topString
-              )}
-            </div>
-          </div>`;
-
           this.fontModule.renderButtons(this._topPlaceholder.domElement);
         }
       }

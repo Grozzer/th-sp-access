@@ -3,6 +3,21 @@ require('./TrustedHelpAccessibility-Fonts.module.scss');
 export interface IFontMap {
 	name: string;
 	value: string;
+	getClassName(): string;
+}
+
+export class FontMap implements IFontMap {
+	name: string;
+	value: string;
+
+	constructor(name: string, value: string) {
+		this.name = name;
+		this.value = value;
+	}
+
+	getClassName(): string {
+		return `access_font_${this.value}`;
+	}
 }
 
 export interface IFontModule {
@@ -41,9 +56,17 @@ export class FontModule implements IFontModule {
 		}
 	}
 	
+	private clearFonts(): void {
+		const docBody = document.querySelector("body");
+		const allClasses = this.fonts.map((font) => font.getClassName());
+		docBody.classList.remove(...allClasses);
+	}
+
 	selectFontByName(fontName: string): void {};
 	selectFont(font: IFontMap): void {
+		this.clearFonts();
+
 		const docBody = document.querySelector("body");
-		docBody.classList.add(`access_font_${font.value}`);
+		docBody.classList.add(font.getClassName());
 	};
 }
