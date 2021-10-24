@@ -1,5 +1,5 @@
-import styleFonts from './TrustedHelpAccessibility-Fonts.module.scss';
 require('./TrustedHelpAccessibility-Fonts.module.scss');
+
 export interface IFontMap {
 	name: string;
 	value: string;
@@ -46,12 +46,16 @@ export class FontModule implements IFontModule {
 		throw new Error("Method not implemented.");
 	}
 	renderButtons(element: HTMLElement): void {
+		const defaultButton = document.createElement("button");
+		defaultButton.textContent = "Default";
+		defaultButton.addEventListener("click", (e:Event) => this.clearFonts());
+		element.appendChild(defaultButton);
+
 		for (let i = 0; i < this.fonts.length; i++) {
 			const font = this.fonts[i];
 			const fontSelect = document.createElement("button");
 			fontSelect.textContent = font.name;
 			fontSelect.addEventListener("click", (e:Event) => this.selectFont(font));
-			//btn.addEventListener("click", (e:Event) => this.getTrainingName(4))
 			element.appendChild(fontSelect);
 		}
 	}
