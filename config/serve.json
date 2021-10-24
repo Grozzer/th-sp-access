@@ -4,23 +4,27 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://cgrosberg.sharepoint.com/_layouts/15/workbench.aspx",
       "customActions": {
         "5cba2117-d677-4b35-976c-30af4ac9f0cb": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "testMessage": "Test message",
+            "Top": "Top area of the page",
+            "Bottom": "Bottom area of the page"
           }
         }
       }
     },
     "trustedHelpAccessibilityTool": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://cgrosberg.sharepoint.com/_layouts/15/workbench.aspx",
       "customActions": {
         "5cba2117-d677-4b35-976c-30af4ac9f0cb": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "testMessage": "Test message",
+            "Top": "Top area of the page",
+            "Bottom": "Bottom area of the page"
           }
         }
       }

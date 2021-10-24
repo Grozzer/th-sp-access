@@ -1,0 +1,30 @@
+@import url("http://fonts.cdnfonts.com/css/opendyslexic");
+
+.app {
+	.forceload {
+		visibility: none;
+	}
+}
+
+
+:global {
+	.access_font {
+	  &_opendyslexic {
+		span,div,button,input,p {
+		  font-family: "OpenDyslexic", sans-serif !important;
+		}
+	  }
+
+	  &_arial {
+		span,div,button,input,p {
+		  font-family: "Arial", "Helvetica", "Verdana", sans-serif !important;
+		}
+	  }
+
+	  &_tahoma {
+		span,div,button,input,p {
+		  font-family: "Tahoma", "Helvetica", "Arial", "Verdana", sans-serif !important;
+		}
+	  }
+	}
+}
