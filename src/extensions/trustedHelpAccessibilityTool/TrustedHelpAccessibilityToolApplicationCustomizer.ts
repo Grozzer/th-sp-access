@@ -9,6 +9,7 @@ import { Dialog } from '@microsoft/sp-dialog';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {FontMap, FontModule,IFontMap,IFontModule} from './FontModule';
+import {IColourModule, ColourModule} from './ColourModule';
 
 import styles from './TrustedHelpAccessibilityToolApplicationCustomizer.module.scss';
 
@@ -36,6 +37,7 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
   private _topPlaceholder: PlaceholderContent | undefined;
   public fontMapping: Array<IFontMap>;
   private fontModule: IFontModule;
+  private colourModule: IColourModule;
 
   @override
   public onInit(): Promise<void> {
@@ -44,6 +46,7 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
     this.fontMapping = fontsInit.map(font => new FontMap(font.name, font.value))
 
     this.fontModule = new FontModule(this.fontMapping);
+    this.colourModule = new ColourModule();
 
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
@@ -66,6 +69,7 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
       if (this.properties) {  
         if (this._topPlaceholder.domElement) {
           this.fontModule.renderButtons(this._topPlaceholder.domElement);
+          this.colourModule.renderControls(this._topPlaceholder.domElement);
         }
       }
     }
