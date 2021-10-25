@@ -48,8 +48,6 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
     this.fontModule = new FontModule(this.fontMapping);
     this.colourModule = new ColourModule();
 
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
     this.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
@@ -76,6 +74,6 @@ export default class TrustedHelpAccessibilityToolApplicationCustomizer
   }
 
   private _onDispose(): void {
-    console.log('[HelloWorldApplicationCustomizer._onDispose] Disposed custom top and bottom placeholders.');
+    
   }
 }
